@@ -16,5 +16,5 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Test
         run: |
-          python -m pytest https://github.com/Francesco-hub/TestingInPython/tree/main/Test
+          python -m pytest https://github.com/Francesco-hub/TestingInPython/Test
         
