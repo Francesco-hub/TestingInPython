@@ -1,9 +1,9 @@
 import unittest
 
-from Test.test_authentication import AuthenticationUnitTests
-from Test.test_notes import NotesUnitTests
-from Test.test_notes_delete import NotesDeleteUnitTests
-from Test.test_sign_up import SignUpUnitTests
+from Test.UnitTests.test_authentication import AuthenticationUnitTests
+from Test.UnitTests.test_notes import NotesUnitTests
+from Test.UnitTests.test_notes_delete import NotesDeleteUnitTests
+from Test.UnitTests.test_sign_up import SignUpUnitTests
 
 unittest.TestLoader.sortTestMethodsUsing = None
 
