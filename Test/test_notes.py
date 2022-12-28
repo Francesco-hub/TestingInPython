@@ -7,7 +7,7 @@ unittest.TestLoader.sortTestMethodsUsing = None
 
 app = create_app('testing')
 
-class TestYourFlaskApp(unittest.TestCase):
+class NotesUnitTests(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
         self.note = 'Test note'
