@@ -16,5 +16,5 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Test
         run: |
-          python -m pytest --rootdir=Test/AuthenticationUnitTests.py
+          python -m pytest --rootdir=../Test
         
