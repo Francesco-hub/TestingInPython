@@ -2,7 +2,7 @@ import unittest
 
 from Test.test_authentication import AuthenticationUnitTests
 from Test.test_notes import NotesUnitTests
-from Test.test_note_delete import NotesDeleteUnitTests
+from Test.test_notes_delete import NotesDeleteUnitTests
 
 unittest.TestLoader.sortTestMethodsUsing = None
 
