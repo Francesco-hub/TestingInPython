@@ -17,22 +17,6 @@ class TestYourFlaskApp(unittest.TestCase):
         self.password = '1234567Test'
 
 
-    def test_home_empty_note(self):
-        self.setUp()
-        self.app.post('/login', data={'email': self.email, 'password': self.password})
-        result = self.app.post('/u', data={'note': ''})
-
-        self.assertEqual(result.status_code, 200)
-        self.assertIn(b'Note is too short!', result.data)
-
-    def test_home_add_note(self):
-        self.setUp()
-        self.app.post('/login', data={'email': self.email, 'password': self.password})
-        self.app.post('/u', data={'note': self.note})
-        notes = self.app.get('/u')
-        print(notes.data)
-        self.assertEqual(b'Test note' in notes.data, True)
-
     def test_delete_note_success(self):
         self.app.post('/login', data={'email': self.email, 'password': self.password})
         self.app.get('/u')
