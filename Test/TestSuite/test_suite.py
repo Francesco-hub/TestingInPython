@@ -4,6 +4,8 @@ from Test.test_authentication import AuthenticationUnitTests
 from Test.test_notes import NotesUnitTests
 from Test.test_note_delete import NotesDeleteUnitTests
 
+unittest.TestLoader.sortTestMethodsUsing = None
+
 if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTests(AuthenticationUnitTests)
