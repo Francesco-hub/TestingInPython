@@ -1,0 +1,3 @@
+1672145153416	geckodriver	INFO	Listening on 127.0.0.1:50404
+1672145156476	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Pale Moon\\palemoon.exe" "--marionette" "--remote-debugging-port" "50405" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Tesol\\AppData\\Local\\Temp\\rust_mozprofile3uokfD"
+Crash Annotation GraphicsCriticalError: |[0][GFX1-]: VendorIDMismatch V 0x1002 0x10de (t=7.23682) [GFX1-]: VendorIDMismatch V 0x1002 0x10de
