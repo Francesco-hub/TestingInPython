@@ -29,5 +29,5 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Test
         run: |
-          python -m pytest --rootdir=${{ github.workspace }}/Test
+          python -m pytest --rootdir=${{ github.workspace }}/Test/TestSuite
         
