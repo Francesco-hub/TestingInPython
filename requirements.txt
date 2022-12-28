@@ -3,3 +3,5 @@ Flask_Login==0.6.2
 flask_sqlalchemy==3.0.2
 SQLAlchemy==1.4.45
 Werkzeug==2.2.2
+pytest==7.2.0
+selenium==4.7.2
