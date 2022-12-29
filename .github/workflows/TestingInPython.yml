@@ -45,6 +45,10 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Test
         run: |
+          export FLASK_APP=app.py
+          export FLASK_ENV=development
+          flask run &
           python -m pytest ${{ github.workspace }}/Test/TestSuite/SeleniumTestSuite/selenium_test_suite.py
+          fg
     
         
