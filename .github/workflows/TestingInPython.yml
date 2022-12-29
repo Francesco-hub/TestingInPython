@@ -29,7 +29,7 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Test
         run: |
-          python -m pytest --rootdir=${{ github.workspace }}/Test/TestSuite
+          python -m pytest --rootdir=${{ github.workspace }}/Test/TestSuite/UnitTestSuite
   
   selenium_test:
     runs-on: windows-latest
@@ -44,6 +44,6 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Test
         run: |
-          python -m pytest --rootdir=${{ github.workspace }}/Test/TestSuite
+          python -m pytest --rootdir=${{ github.workspace }}/Test/TestSuite/SeleniumTestSuite
     
         
