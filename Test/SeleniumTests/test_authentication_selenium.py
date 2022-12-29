@@ -2,13 +2,11 @@ import unittest
 import Website
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-
-class AuthenticationUnitTests(unittest.TestCase):
+class AuthenticationUnitTestsSelenium(unittest.TestCase):
     driver = webdriver.Chrome()
     def setUp(self):
         app = Website.create_app('testing')
@@ -79,6 +77,5 @@ class AuthenticationUnitTests(unittest.TestCase):
         field2 = self.driver.find_element(By.XPATH, "/html/body/div/form/h3").text
         self.assertIn('Login', field2)
 
-
     if __name__ == '__main__':
-        unittest.main()
+        unittest.main(verbosity=2)

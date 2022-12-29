@@ -1,53 +1,50 @@
-import json
 import unittest
-from Website import create_app, db
-from Website.models import Note
+import Website
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 unittest.TestLoader.sortTestMethodsUsing = None
 
-app = create_app('testing')
+class NotesUnitTestsSelenium(unittest.TestCase):
+    driver = webdriver.Chrome()
 
-class NotesUnitTests(unittest.TestCase):
     def setUp(self):
+        app = Website.create_app('testing')
         self.app = app.test_client()
-        self.note = 'Test note'
-        self.note_id = 1
-        self.user_id = 1
+        self.driver.get("http://127.0.0.1:5000/login")
         self.email = 'testingUser@test.com'
         self.password = '1234567Test'
-
+        self.testNote = 'This is a test note'
+        email_field = self.driver.find_element(By.XPATH, "/html/body/div/form/div[1]/input")
+        email_field.send_keys(self.email)
+        password1_field = self.driver.find_element(By.XPATH, "/html/body/div/form/div[2]/input")
+        password1_field.send_keys(self.password)
+        submit_button = self.driver.find_element(By.XPATH, "/html/body/div/form/button")
+        submit_button.click()
 
     def test_home_empty_note(self):
         self.setUp()
-        self.app.post('/login', data={'email': self.email, 'password': self.password})
-        result = self.app.post('/u', data={'note': ''})
 
-        self.assertEqual(result.status_code, 200)
-        self.assertIn(b'Note is too short!', result.data)
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/form/div/button")))
+        self.driver.find_element(By.XPATH, "/html/body/div[2]/form/div/button").click()
+        field = self.driver.find_element(By.XPATH, "/html/body/div[1]").text
+        self.assertIn('Note is too short', field)
 
     def test_home_add_note(self):
         self.setUp()
-        self.app.post('/login', data={'email': self.email, 'password': self.password})
-        self.app.post('/u', data={'note': self.note})
-        notes = self.app.get('/u')
-        print(notes.data)
-        self.assertEqual(b'Test note' in notes.data, True)
 
-    def test_delete_note_success(self):
-        self.app.post('/login', data={'email': self.email, 'password': self.password})
-        self.app.get('/u')
-        result = self.app.post('/delete-note', data=(json.dumps({'noteId': self.note_id})))
-        notes = self.app.get('/u')
-        self.assertEqual(b'Test note' in notes.data, False)
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/form/div/button")))
+        submit_button = self.driver.find_element(By.XPATH, "/html/body/div[2]/form/div/button")
+        note_field = self.driver.find_element(By.XPATH, "/html/body/div[2]/form/textarea")
+        note_field.send_keys(self.testNote)
+        submit_button.click()
+        field = self.driver.find_element(By.XPATH, "/html/body/div[1]").text
+        self.assertIn('Note added', field)
 
-    def test_delete_note_failure(self):
-        '''# Send a POST request to the delete_note view with a valid note ID
-        result = self.app.post('/delete-note', data=json.dumps({'noteId': self.note_id}))
 
-        # Assert that the note was not deleted from the database
-        note = Note.query.get(self.note_id)
-        self.assertIsNotNone(note)'''
-        self.assertEqual(1,1)
 
-if __name__ == '__main__':
-    unittest.main()
+    if __name__ == '__main__':
+        unittest.main()

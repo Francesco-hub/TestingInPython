@@ -10,7 +10,7 @@ class SignUpUnitTests(unittest.TestCase):
         app = Website.create_app('testing')
         self.app = app.test_client()
         self.email1 = 'testingUser@test.com'
-        self.email2 = str(datetime.now()) + '@test.com'
+        self.email2 = str(hash(str(datetime.now()))) + '@test.com'
         self.email3 = 'testingUseraasssssa@test.com'
         self.password = '1234567Test'
         self.password2 = '1234567Tests'
