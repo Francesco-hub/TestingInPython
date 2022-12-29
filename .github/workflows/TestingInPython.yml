@@ -32,6 +32,7 @@ jobs:
           python -m pytest --rootdir=${{ github.workspace }}/Test/TestSuite/UnitTestSuite
   
   selenium_test:
+    needs: unit_test
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
