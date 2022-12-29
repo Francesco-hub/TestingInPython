@@ -16,5 +16,4 @@ if __name__ == '__main__':
     suite.addTests(NotesDeleteUnitTests)
     suite.addTests(SignUpUnitTests)
 
-
     unittest.TextTestRunner.run(suite)
