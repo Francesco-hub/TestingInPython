@@ -29,7 +29,7 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Test
         run: |
-          python -m pytest -k --rootdir=${{ github.workspace }}/Test/TestSuite/UnitTestSuite
+          python -m pytest --rootdir=${{ github.workspace }}/Test/TestSuite/UnitTestSuite/test_suite.py
   
   selenium_test:
     needs: unit_test
