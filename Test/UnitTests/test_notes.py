@@ -30,7 +30,6 @@ class NotesUnitTests(unittest.TestCase):
         self.app.post('/login', data={'email': self.email, 'password': self.password})
         self.app.post('/u', data={'note': self.note})
         notes = self.app.get('/u')
-        print(notes.data)
         self.assertEqual(b'Test note' in notes.data, True)
 
 
