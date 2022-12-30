@@ -31,24 +31,24 @@ jobs:
         run: |
           python -m pytest ${{ github.workspace }}/Test/TestSuite/UnitTestSuite/test_suite.py
   
-  selenium_test:
-    needs: unit_test
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
-      - name: Install dependencies
-        run: |
-          python -m pip install -r requirements.txt
-      - name: Run program for Test
-        run: |
-          nohup python ${{ github.workspace }}/main.py &
-      - name: Run Tests
-        run: |
-          python -m pytest ${{ github.workspace }}/Test/TestSuite/SeleniumTestSuite/selenium_test_suite.py
+  #selenium_test:
+    #needs: unit_test
+    #runs-on: windows-latest
+    #steps:
+      #- uses: actions/checkout@v2
+      #- name: Set up Python 3.9
+        #uses: actions/setup-python@v2
+        #with:
+          #python-version: 3.9
+      #- name: Install dependencies
+        #run: |
+          #python -m pip install -r requirements.txt
+      #- name: Run program for Test
+        #run: |
+          #nohup python ${{ github.workspace }}/main.py &
+      #- name: Run Tests
+        #run: |
+          #python -m pytest ${{ github.workspace }}/Test/TestSuite/SeleniumTestSuite/selenium_test_suite.py
       
     
         
