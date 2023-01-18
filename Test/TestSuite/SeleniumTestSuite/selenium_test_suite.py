@@ -10,6 +10,7 @@ unittest.TestLoader.sortTestMethodsUsing = None
 if __name__ == '__main__':
 
     suite = unittest.TestSuite()
+    
     suite.addTests(SignUpUnitTestsSelenium)
     suite.addTests(AuthenticationUnitTestsSelenium)
     suite.addTests(NotesUnitTestsSelenium)
