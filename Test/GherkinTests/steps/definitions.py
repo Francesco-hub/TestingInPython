@@ -5,11 +5,6 @@ from behave import given, then, when
 import Website
 
 
-
-
-
-
-
 app = Website.create_app('testing')
 app = app.test_client()
 
@@ -17,7 +12,6 @@ app = app.test_client()
 @given('I want to login')
 def step_impl(context):
     app = Website.create_app('testing')
-    app = app.test_client()
 
 
 @when('I try to login using {email} as email and {password} as password')
@@ -34,7 +28,7 @@ def step_impl(context, LoginResult):
         assert (not LoginResult == LoginResult)
 
 #Feature Sign Up
-@given(u'I want to sign up')
+@given('I want to sign up')
 def step_impl(context):
     app = Website.create_app('testing')
     app = app.test_client()

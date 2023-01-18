@@ -28,7 +28,7 @@ class SignUpUnitTests(unittest.TestCase):
 
     def test_first_name_too_short_sign_up_fails(self):
         self.setUp()
-        result = self.app.post('/sign-up', data={'email': self.email3, 'firstName': 'a', 'password1': self.password,'password2': self.password})
+        result = self.app.post('/sign-up', data={'email': self.email3, 'firstName': 'a', 'password1': self.password, 'password2': self.password})
         print(result.data)
         self.assertIn(b'First name must be greater than 1 character', result.data)
     def test_password_too_short_sign_up_fails(self):
